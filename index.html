@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Shopify Editions — Frontend Mirror</title>
+  <title>Shopify Editions</title>
   <style>
     html,body{margin:0;min-height:100%;background:#fff}
     #app{min-height:100vh}
@@ -29,9 +29,8 @@
 
       const cleanUrl = (value) => {
         if (!value || isExternal(value)) return value;
-        return new URL(value, location.origin + '/www.shopify.com/editions/').pathname +
-          new URL(value, location.origin + '/www.shopify.com/editions/').search +
-          new URL(value, location.origin + '/www.shopify.com/editions/').hash;
+        const resolved = new URL(value, location.origin + '/www.shopify.com/editions/');
+        return resolved.pathname + resolved.search + resolved.hash;
       };
 
       const rewriteSrcset = (value) => value.split(',').map(entry => {
@@ -46,13 +45,8 @@
         const html = await response.text();
         const doc = new DOMParser().parseFromString(html, 'text/html');
 
-        // This is intentionally a static frontend mirror. Do not execute Shopify/Hydrogen/Oxygen JS.
-        doc.querySelectorAll('script, meta[http-equiv="refresh"], link[rel~="modulepreload"], link[as="script"]').forEach(el => el.remove());
-        doc.querySelectorAll('base').forEach(el => el.remove());
-
-        const base = doc.createElement('base');
-        base.href = '/www.shopify.com/editions/';
-        doc.head.prepend(base);
+        // Frontend-only mode: never execute Shopify Hydrogen/Oxygen/React/Rive bundles.
+        doc.querySelectorAll('script, meta[http-equiv="refresh"], link[rel~="modulepreload"], link[as="script"], base').forEach(el => el.remove());
 
         doc.querySelectorAll('[src], [href], [poster], [data-src], [data-href], [srcset], [data-srcset]').forEach(el => {
           for (const attr of ['src','href','poster','data-src','data-href']) {
@@ -66,8 +60,13 @@
           }
         });
 
+        // Preserve the source page's relative CSS/image URL base.
+        const base = document.createElement('base');
+        base.href = '/www.shopify.com/editions/';
+        document.head.appendChild(base);
+
         document.title = doc.title || 'Shopify Editions';
-        document.head.insertAdjacentHTML('beforeend', doc.head.innerHTML.replace(/<base[^>]*>/i, ''));
+        document.head.insertAdjacentHTML('beforeend', doc.head.innerHTML);
         app.innerHTML = doc.body.innerHTML;
         status.hidden = true;
       } catch (error) {
