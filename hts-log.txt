@@ -1,0 +1,14 @@
+HTTrack3.49-12 launched on Thu, 20 Aug 2026 13:48:46 at https://www.shopify.com/editions/winter2026 +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar +*.gif +*.jpg +*.jpeg +*.png +*.tif +*.bmp +*.zip +*.tar +*.tgz +*.gz +*.rar +*.z +*.exe +*.mov +*.mpg +*.mpeg +*.avi +*.asf +*.mp3 +*.mp2 +*.rm +*.wav +*.vob +*.qt +*.vid +*.ac3 +*.wma +*.wmv
+(winhttrack -qwC2%Ps0u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F  -%l "en, *" https://www.shopify.com/editions/winter2026 -O1 "C:\My Web Sites\maybe" +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar +*.gif +*.jpg +*.jpeg +*.png +*.tif +*.bmp +*.zip +*.tar +*.tgz +*.gz +*.rar +*.z +*.exe +*.mov +*.mpg +*.mpeg +*.avi +*.asf +*.mp3 +*.mp2 +*.rm +*.wav +*.vob +*.qt +*.vid +*.ac3 +*.wma +*.wmv )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+14:11:18	Error: 	"Not Found" (404) at link https://www.shopify.com/editions/shopify-w26-emoji-pack.zip (from https://www.shopify.com/editions/winter2026)
+14:32:43	Error: 	"Not Found" (404) at link https://www.shopify.com/editions/{{linkpopUrl}}?utm_source=editions-lp&utm_medium=brochure&utm_campaign=editions-june22&utm_content= (from https://www.shopify.com/editions/summer2022)
+14:32:43	Error: 	"Not Found" (404) at link https://www.shopify.com/editions/winter2025/%22https:/cdn.shopify.com/s/files/1/0702/3204/7829/files/progress-bg-cropped--optimized.svg?_cf_worker_selection=%2Fbrochure-dispatch-8a92c1bd (from https://www.shopify.com/editions/winter2025/tv)
+
+HTTrack Website Copier/3.49-12 mirror complete in 43 minutes 57 seconds : 5595 links scanned, 5592 files written (1548176277 bytes overall) [1518155996 bytes received at 575713 bytes/sec], 45992787 bytes transferred using HTTP compression in 325 files, ratio 18%, 62.8 requests per connection
+(3 errors, 0 warnings, 0 messages)

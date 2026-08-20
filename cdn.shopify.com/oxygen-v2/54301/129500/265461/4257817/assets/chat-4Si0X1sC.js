@@ -1,0 +1,1 @@
+import{l as e,u as t}from"./helpers-COXIt4px.js";async function n(n,r){return e(t.AI_CHAT,n,r)}export{n as t};
